@@ -3,7 +3,6 @@ package br.com.resource;
 import br.com.core.EmailRequest;
 import br.com.service.EmailSenderService;
 import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
