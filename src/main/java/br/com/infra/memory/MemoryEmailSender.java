@@ -3,10 +3,9 @@ package br.com.infra.memory;
 import org.jboss.logging.Logger;
 
 import br.com.adapters.EmailSenderGatWay;
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 
-@ApplicationScoped
+
 public class MemoryEmailSender implements EmailSenderGatWay {
 
 	@Inject
@@ -14,7 +13,7 @@ public class MemoryEmailSender implements EmailSenderGatWay {
 
 	@Override
 	public void sendEmail(String to, String subject, String body) {
-		LOG.info("send email");
+		LOG.info("send email1");
 
 	}
 
