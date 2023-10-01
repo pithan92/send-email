@@ -1,23 +1,22 @@
 package br.com.service;
 
-import br.com.core.SendEmailUseCase;
 import br.com.adapters.EmailSenderGatWay;
+import br.com.adapters.factorys.EmailSenderFactory;
+import br.com.core.EmailSenderStrategy;
+import br.com.core.SendEmailUseCase;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 
 @ApplicationScoped
 public class EmailSenderService implements SendEmailUseCase {
-	
-	@Inject
-	private final EmailSenderGatWay emailSenderGatWay;
-
-	public EmailSenderService(EmailSenderGatWay emailSenderGatWay) {
-		this.emailSenderGatWay = emailSenderGatWay;
-	}
 
 	@Override
 	public void sendEmail(String to, String subject, String body) {
-		this.emailSenderGatWay.sendEmail(to, subject, body);
+		EmailSenderGatWay emailSenderGatWay = selectStrategy(EmailSenderStrategy.MAILTRAP);
+		emailSenderGatWay.sendEmail(to, subject, body);
+	}
+
+	private EmailSenderGatWay selectStrategy(EmailSenderStrategy strategy) {
+		return EmailSenderFactory.delivery(strategy);
 	}
 
 }
