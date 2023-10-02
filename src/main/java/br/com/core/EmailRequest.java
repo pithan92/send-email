@@ -14,4 +14,6 @@ public class EmailRequest {
 	private String subject;
 	@Schema(required = true, example = "Hello Dear! Its a nice day")
 	private String body;
+	@Schema(required = true, example = "MAILTRAP")
+	private EmailSenderStrategy sender;
 }
