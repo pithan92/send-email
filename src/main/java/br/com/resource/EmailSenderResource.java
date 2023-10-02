@@ -26,7 +26,7 @@ public class EmailSenderResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public ResponseBuilder sendEmail(EmailRequest emailRequest) {
-		this.emailSenderService.sendEmail(emailRequest.getTo(), emailRequest.getSubject(), emailRequest.getBody());
+		this.emailSenderService.sendEmail(emailRequest);
 		return Response.ok("send email");
 	}
 }

@@ -4,7 +4,6 @@ import java.lang.annotation.Annotation;
 
 import br.com.anotations.Email.EmailMailTrap;
 import br.com.anotations.Email.EmailMemory;
-import br.com.infra.mailtrap.MailTrapEmailSender;
 
 public enum EmailSenderStrategy {
 	MAILTRAP {
