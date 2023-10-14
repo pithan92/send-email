@@ -4,6 +4,7 @@ import org.jboss.logging.Logger;
 
 import br.com.adapters.EmailSenderGatWay;
 import br.com.anotations.Email.EmailMailTrap;
+import br.com.core.exceptions.EmailServiceException;
 import io.quarkus.arc.Unremovable;
 import io.quarkus.mailer.Mail;
 import io.quarkus.mailer.Mailer;
@@ -20,17 +21,19 @@ public class MailTrapEmailSender implements EmailSenderGatWay {
 	Logger LOG;
 
 	@Inject
-	@MailerName("mail-trap") 
+	@MailerName("mail-trap")
 	Mailer mailer;
 
 	@Override
 	public void sendEmail(String to, String subject, String body) {
 		LOG.info("Sending email to: " + to);
 
-		mailer.send(Mail.withText(to, subject, body));
+		try {
+			mailer.send(Mail.withText(to, subject, body));
 
-		LOG.info("Email sent successfully");
-
+			LOG.info("Email sent successfully");
+		} catch (Exception e) {
+			throw new EmailServiceException("Failure while sending email", e);
+		}
 	}
-
 }
