@@ -11,7 +11,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
 
-@Path("")
+@Path("/api")
 public class EmailSenderResource {
 	
 	@Inject
@@ -22,7 +22,7 @@ public class EmailSenderResource {
 	}
 
 	@POST()
-	@Path("send-email")
+	@Path("/send-email")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	public ResponseBuilder sendEmail(EmailRequest emailRequest) {

@@ -16,4 +16,15 @@ public class EmailRequest {
 	private String body;
 	@Schema(required = true, example = "MAILTRAP")
 	private EmailSenderStrategy sender;
+
+	public EmailRequest() {
+	}
+
+	public EmailRequest(String to, String subject, String body, EmailSenderStrategy sender) {
+		this.to = to;
+		this.subject = subject;
+		this.body = body;
+		this.sender = sender;
+	}
+
 }
